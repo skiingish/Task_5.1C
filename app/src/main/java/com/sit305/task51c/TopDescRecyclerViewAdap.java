@@ -13,6 +13,7 @@ import java.util.List;
 
 public class TopDescRecyclerViewAdap extends RecyclerView.Adapter<TopDescRecyclerViewAdap.ViewHolder>{
 
+    // The list of places.
     private List<Places> placesList;
     private Context context;
 
@@ -34,17 +35,12 @@ public class TopDescRecyclerViewAdap extends RecyclerView.Adapter<TopDescRecycle
     // Set the data
     @Override
     public void onBindViewHolder(@NonNull TopDescRecyclerViewAdap.ViewHolder holder, int position) {
+
+        // Set the image.
         holder.desc_IV.setImageResource(placesList.get(position).getImageFile());
+
+        // Set the id of this image view depending on it's places list ID.
         holder.desc_IV.setId(placesList.get(position).getId());
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int id = placesList.get(position).getId();
-                // Call the fragment with the ID of this item.
-
-            }
-        });
     }
 
     @Override
@@ -52,8 +48,10 @@ public class TopDescRecyclerViewAdap extends RecyclerView.Adapter<TopDescRecycle
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        // The image view.
         ImageView desc_IV;
 
+        // Get the image view.
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             desc_IV = itemView.findViewById(R.id.desc_IV);

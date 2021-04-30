@@ -35,9 +35,12 @@ public class PlacesToGoRecyclerViewAdapter extends RecyclerView.Adapter<PlacesTo
     // Add the data in.
     @Override
     public void onBindViewHolder(@NonNull PlacesToGoRecyclerViewAdapter.ViewHolder holder, int position) {
+        // Set the required information from the places list
         holder.placesToGo_IV.setImageResource(placesList.get(position).getImageFile());
         holder.placeToGoTitle_TV.setText(placesList.get(position).getTitle());
         holder.shortDesc_TV.setText(placesList.get(position).getDescription());
+
+        // Set the id of this layout depending on it's places list ID.
         holder.placesToGo_LL.setId(placesList.get(position).getId());
     }
 
@@ -49,11 +52,13 @@ public class PlacesToGoRecyclerViewAdapter extends RecyclerView.Adapter<PlacesTo
     // Gets the text views to be added to the view holder.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        // The views inside this view holder.
         LinearLayout placesToGo_LL;
         ImageView placesToGo_IV;
         TextView placeToGoTitle_TV;
         TextView shortDesc_TV;
 
+        // Set the views.
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             placesToGo_LL = itemView.findViewById(R.id.placesToGo_LL);

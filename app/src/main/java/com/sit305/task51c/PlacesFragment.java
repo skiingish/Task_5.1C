@@ -11,11 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PlacesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PlacesFragment extends Fragment {
 
     // Information that will be passed to the fragment to will be set in the onCreateView method
