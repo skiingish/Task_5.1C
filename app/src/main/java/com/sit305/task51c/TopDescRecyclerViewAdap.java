@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -36,11 +39,14 @@ public class TopDescRecyclerViewAdap extends RecyclerView.Adapter<TopDescRecycle
     @Override
     public void onBindViewHolder(@NonNull TopDescRecyclerViewAdap.ViewHolder holder, int position) {
         holder.desc_IV.setImageResource(placesList.get(position).getImageFile());
+        holder.desc_IV.setId(placesList.get(position).getId());
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int id = placesList.get(position).getId();
                 // Call the fragment with the ID of this item.
+                MainActivity.setItemClicked(id);
             }
         });
     }

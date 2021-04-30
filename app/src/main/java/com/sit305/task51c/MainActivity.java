@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
     List<Places> placesList = new ArrayList<>();
 
+    static int itemClicked;
+
     int[] imageList = {R.drawable.holiday_placeholder, R.drawable.holiday_placeholder, R.drawable.holiday_placeholder, R.drawable.holiday_placeholder, R.drawable.holiday_placeholder, R.drawable.holiday_placeholder};
-    String[] titleList = {"Summer Holiday", "Summer Holiday", "Summer Holiday", "Summer Holiday", "Summer Holiday", "Summer Holiday"};
-    String[] descriptionList = {"I am a description of a place to go", "I am a description of a place to go", "I am a description of a place to go", "I am a description of a place to go", "I am a description of a place to go", "I am a description of a place to go"};
+    String[] titleList = {"Summer Holiday", "Winter Holiday", "Summer Holiday", "Summer Holiday", "Summer Holiday", "Summer Holiday"};
+    String[] descriptionList = {"I am a description of a place to go", "Come to this winter wonderland", "I am a description of a place to go", "I am a description of a place to go", "I am a description of a place to go", "I am a description of a place to go"};
 
 
     @Override
@@ -54,14 +57,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickShowSelection(View view) {
+        int viewID = view.getId();
+        Toast.makeText(this, "Item ID " + viewID, Toast.LENGTH_LONG).show();
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("VIEW_IMAGE", imageList[viewID]);
+        bundle.putString("VIEW_TITLE", titleList[viewID]);
+        bundle.putString("VIEW_DESCRIPTION", descriptionList[viewID]);
+
         Fragment fragment;
 
         fragment = new PlacesFragment();
+
+        fragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         fragmentTransaction.replace(R.id.fragment, fragment)
                 .commit();
+
+    }
+
+    public static void setItemClicked(int itemID) {
+        itemClicked = itemID;
     }
 }
