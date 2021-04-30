@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ public class PlacesToGoRecyclerViewAdapter extends RecyclerView.Adapter<PlacesTo
         holder.placesToGo_IV.setImageResource(placesList.get(position).getImageFile());
         holder.placeToGoTitle_TV.setText(placesList.get(position).getTitle());
         holder.shortDesc_TV.setText(placesList.get(position).getDescription());
+        holder.placesToGo_LL.setId(placesList.get(position).getId());
     }
 
     @Override
@@ -47,12 +49,14 @@ public class PlacesToGoRecyclerViewAdapter extends RecyclerView.Adapter<PlacesTo
     // Gets the text views to be added to the view holder.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        LinearLayout placesToGo_LL;
         ImageView placesToGo_IV;
         TextView placeToGoTitle_TV;
         TextView shortDesc_TV;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            placesToGo_LL = itemView.findViewById(R.id.placesToGo_LL);
             placesToGo_IV = itemView.findViewById(R.id.placesToGo_IV);
             placeToGoTitle_TV = itemView.findViewById(R.id.placeToGoTitle_TV);
             shortDesc_TV = itemView.findViewById(R.id.shortDesc_TV);

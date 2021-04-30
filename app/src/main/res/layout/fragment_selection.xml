@@ -16,9 +16,10 @@
         android:id="@+id/topDestinations_TV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="18dp"
+        android:padding="12dp"
         android:gravity="center"
         android:textColor="@color/black"
+        android:textSize="18sp"
         android:text="TOP DESTINATIONS" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -35,6 +36,7 @@
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:textColor="@color/black"
+        android:textSize="18sp"
         android:text="PLACES TO GO" />
 
     <androidx.recyclerview.widget.RecyclerView

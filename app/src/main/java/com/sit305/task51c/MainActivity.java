@@ -21,13 +21,15 @@ public class MainActivity extends AppCompatActivity {
     TopDescRecyclerViewAdap topDescRecyclerViewAdap;
     PlacesToGoRecyclerViewAdapter placesToGoRecyclerViewAdapter;
 
+    // To store the places information.
     List<Places> placesList = new ArrayList<>();
 
-    static int itemClicked;
-
-    int[] imageList = {R.drawable.holiday_placeholder, R.drawable.holiday_placeholder, R.drawable.holiday_placeholder, R.drawable.holiday_placeholder, R.drawable.holiday_placeholder, R.drawable.holiday_placeholder};
-    String[] titleList = {"Summer Holiday", "Winter Holiday", "Summer Holiday", "Summer Holiday", "Summer Holiday", "Summer Holiday"};
-    String[] descriptionList = {"I am a description of a place to go", "Come to this winter wonderland", "I am a description of a place to go", "I am a description of a place to go", "I am a description of a place to go", "I am a description of a place to go"};
+    // Create the list of places with their data.
+    int[] imageList = {R.drawable.holiday_placeholder, R.drawable.winter_wonderland, R.drawable.sydney, R.drawable.london, R.drawable.treehouse, R.drawable.space_hotel};
+    String[] titleList = {"White Sand Island", "Mount Snows-A-lot", "Sydney", "London", "Tree House", "Space Hotel"};
+    String[] descriptionList = {"Summer holiday at the brightest sand around.", "Come to this winter wonderland, where it snows every day.",
+            "It has a bridge!", "Lots of old timey buildings and history.",
+            "Come to the jungle, Hope you're not scared of heights.", "It's in outerspace, enough said."};
 
 
     @Override
@@ -57,29 +59,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickShowSelection(View view) {
-        int viewID = view.getId();
-        Toast.makeText(this, "Item ID " + viewID, Toast.LENGTH_LONG).show();
 
+        // Get the ID of the view that was clicked.
+        int viewID = view.getId();
+
+        // Create a new new bundle pass the correct information to the fragment.
         Bundle bundle = new Bundle();
         bundle.putInt("VIEW_IMAGE", imageList[viewID]);
         bundle.putString("VIEW_TITLE", titleList[viewID]);
         bundle.putString("VIEW_DESCRIPTION", descriptionList[viewID]);
 
+        // Create a new fragment.
         Fragment fragment;
-
         fragment = new PlacesFragment();
 
+        // Pass the information.
         fragment.setArguments(bundle);
 
+        // Start the fragment.
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+        // Add fragment to the back of the stack to go back if the user clicks the back button.
         fragmentTransaction.replace(R.id.fragment, fragment)
-                .commit();
-
-    }
-
-    public static void setItemClicked(int itemID) {
-        itemClicked = itemID;
+                .addToBackStack(null).commit();
     }
 }
