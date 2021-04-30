@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Set the
+        // Set the recycler views.
         topDestinations_RV = findViewById(R.id.topDestinations_RV);
         placesToGo_RV = findViewById(R.id.placesToGo_RV);
 
